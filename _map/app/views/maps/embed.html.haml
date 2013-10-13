@@ -1,0 +1,90 @@
+!!! 5
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="de"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="de"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="de"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="de"> <!--<![endif]-->
+%head
+  %title Premium - Finder
+
+  %meta{:name => 'Content-Type', :content => 'text/html; charset=UTF-8'}
+  %meta{:name => 'viewport', :content => 'width=device-width; initial-scale=1; maximum-scale=1; user-scalable=no;'}
+
+  %link{:rel => 'shortcut icon', :href => './favicon.ico'}
+
+  = stylesheet_link_tag    "style"
+  = javascript_include_tag "script"
+
+%body
+  %div#pf-test
+  %div#pf-container.no-js
+    %form#pf-search-form
+      %div.pf-search-options
+        %div.pf-interface
+          %span.pf-desc
+            Ich suche nach
+          %select#pf-layer-select
+            %option{:value => 'd-c'} H&auml;ndlern - Cola
+            %option{:value => 'd-b'} H&auml;ndlern - Bier
+            %option{:value => 'd-k'} H&auml;ndlern - Kaffee
+            %option{:value => 'd-f'} H&auml;ndlern - Frohlunder
+            %option{:value => 'l-c'} L&auml;den - Cola
+            %option{:value => 'l-b'} L&auml;den - Bier
+            %option{:value => 'l-k'} L&auml;den - Kaffee
+            %option{:value => 'l-f'} L&auml;den - Frohlunder
+            %option{:value => 's-c'} Sprechern - Cola
+            %option{:value => 's-b'} Sprechern - Bier
+            %option{:value => 's-k'} Sprechern - Kaffee
+            %option{:value => 's-f'} Sprechern - Frohlunder
+          in 
+          %select#pf-country-select
+            %option{:value => 'de'} Deutschland
+            %option{:value => 'at'} &Ouml;stereich
+            %option{:value => 'ch'} Schweiz
+        %div.pf-loading
+          Lade Kartendaten...
+      %input.pf-input#pf-search-input{:type => 'text', :placeholder => 'Stadt oder Adresse eingeben'}
+      %input.pf-button#pf-search-now{:type => 'submit', :value => 'Suchen'}
+
+
+    %ul#pf-tab-bar
+      - if params[:display] == "map" || params[:display] == "all"
+        %li.pf-tab-header
+          %a#pf-map-link.pf-current{:href => '#'}
+            Karte
+            %small - Alles auf einen Blick
+      - if params[:display] == "list" || params[:display] == "all"
+        %li.pf-tab-header
+          %a#pf-list-link{:href => '#', :class => ('pf-current' if params[:display] == "list") }
+            Liste
+            %small - Im Umkreis suchen
+      %li.pf-right
+        %a{:href => 'http://www.premium-cola.de/component/contact/47-kontakt/7-premium-kontakt', :target => '_top'} Fehler melden
+
+    %div#pf-map-tab.pf-tab{:style => ('display:none;' if params[:display] == "list")}
+      %div#pf-map
+
+    %div#pf-list-tab.pf-tab{:style => ('display:none;' if params[:display] != "list")}
+      %div#pf-list-container
+        %div#pf-no-results
+          Es tut uns Leid.
+          %br/
+          Keine Sucheergebnisse
+        %ul#pf-results
+        %a#pf-results-load-more-link{:href => '#'}
+          weitere anzeigen
+
+  #div#pf-join
+    Dein Lieblingsladen oder deine Stadt ist nicht dabei?
+    %br/
+    %a{:href => 'http://www.premium-cola.de/kollektiv/mitmachen', :target => '_top'} &raquo; Mitmachen!
+
+    -#%div#pf-footer
+      %input.pf-input.small.disabled{:type => 'text', :value => 'http://finder.premium-cola.de/#krefeld'}
+      %input.pf-button.small{:type => 'submit', :value => 'Link kopieren'}
+
+
+
+
+</html>
+

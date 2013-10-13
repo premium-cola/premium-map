@@ -1,0 +1,46 @@
+@mixin button () {
+  @include transition(0.2s);
+  @include rounded(3px);
+  @include shadow($blur: 1px, $color: rgba(0, 0, 0, 0));
+  @include arial;
+
+  color: white;
+  font-size: .95em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 7px 8px;
+  border: 1px solid darken($grey, 15);
+  background: $grey url('gradient.png');
+  &:hover { @include shadow($blur: 1px, $color: rgba(0, 0, 0, 0.3)); }
+  &:active { 
+    @include inner-shadow($blur: 2px, $color: rgba(0, 0, 0, .3));
+    color: darken(white, 40);
+    background: darken($grey, 5) ;
+    
+  }
+}
+
+@mixin input ($width: 100px) {
+  @include transition(0.2s);
+  @include inner-shadow($blur: 4px, $color: rgba(0, 0, 0, 0.2));
+  @include arial;
+
+  font-size: 1.1em;
+  display: block;
+  padding: 4px 5px;
+  border: 2px solid white;
+  width: $width;
+  &:hover { 
+    @include inner-shadow($color: rgba(0, 0, 0, .4));
+
+    border-color: lighten(#ffcc33, 5); 
+}
+&:focus {
+  @include inner-shadow($blur: 4px, $color: rgba(0, 0, 0, .4));
+
+  border-color: lighten(#ffcc33, 5); 
+  outline: none !important; 
+}
+}
+

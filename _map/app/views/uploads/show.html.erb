@@ -1,0 +1,11 @@
+<%= form_tag({:action => :upload}, :multipart => true) do %>
+
+  <p>
+    Datei hochladen:
+  </p>
+
+  <p>
+   <%= file_field_tag 'excel_file' %>
+  </p>
+  <%= submit_tag %>
+<% end %>

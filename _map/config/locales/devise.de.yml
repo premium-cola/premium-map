@@ -1,0 +1,54 @@
+de:
+  errors:
+    messages:
+      expired: "ist abgelaufen, bitte fordern Sie es neu an"
+      not_found: "nicht gefunden"
+      already_confirmed: "wurde bereits bestätigt"
+      not_locked: "ist nicht gesperrt"
+      not_saved:
+        one: "1 Fehler verhinderte, das %{resource} gespeichert werden konnte:"
+        other: "%{count} Fehler verhinderten, das %{resource} gespeichert werden konnte:"
+
+  devise:
+    failure:
+      already_authenticated: 'Sie sind schon angemeldet.'
+      unauthenticated: 'Sie müssen sich anmelden oder registrieren, bevor Sie weiterfahren können.'
+      unconfirmed: 'Sie müssen Ihren Account bestätigen, bevor Sie weiterfahren können.'
+      locked: 'Ihr Account ist gesperrt.'
+      invalid: 'Ungültige Anmeldedaten.'
+      invalid_token: 'Ungültiger Anmeldetoken.'
+      timeout: 'Ihre Sitzung ist abgelaufen, bitte melden Sie sich erneut an.'
+      inactive: 'Ihr Account ist nicht aktiv.'
+    sessions:
+      signed_in: 'Erfolgreich angemeldet.'
+      signed_out: 'Erfolgreich abgemeldet.'
+    passwords:
+      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.' 
+      updated: 'Ihr Passwort wurde geändert. Sie sind angemeldet.'
+      updated_not_active: 'Ihr Passwort wurde geändert.'
+    confirmations:
+      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.' 
+      send_paranoid_instructions: 'Wenn Ihr Passwort in unserer Datenbank existiert, erhalten Sie in kürze eine E-Mail mit einer Anleitung, wie Sie Ihr Passwort zurücksetzen können.'
+      confirmed: 'Ihr Passwort wurde geändert. Sie sind angemeldet.'
+    registrations:
+      signed_up: 'Sie haben sich erfolgreich registriert. Es kann sein, dass Sie eine Aktivierungs-E-Mail erhalten.'
+      signed_up_but_unconfirmed: 'Sie haben sich erfolgreich registriert. Wir konnten Sie noch nicht anmelden, da Ihr Account noch nicht bestätigt ist. Sie erhalten in Kürze eine E-Mail mit der Anleitung, wie Sie Ihren Account freischalten können.'
+      signed_up_but_inactive: 'Sie haben sich erfolgreich registriert. Wir konnten Sie noch nicht anmelden, da Ihr Account inaktiv ist.'
+      signed_up_but_locked: 'Sie haben sich erfolgreich registriert. Wir konnten Sie noch nicht anmelden, da Ihr Account gesperrt ist.'
+      updated: 'Die Angaben wurden erfolgreich geändert.'
+      destroyed: 'Ihr Account wurde erfolgreich gelöscht.'
+    unlocks:
+      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie Ihren Account entsperren können.'
+      unlocked: 'Ihr Account wurde entsperrt. Sie sind angemeldet.'
+      send_paranoid_instructions: 'Wenn Ihr Account existiert, erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie Ihren Account entsperren können.'
+    oauth_callbacks:
+      success: 'Erfolgreich mit dem %{kind}-Account angemeldet.'
+      failure: 'Sie konnten nicht mit dem %{kind}-Account angemeldet werden, weil "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Anleitung zur Bestätigung Ihres Accounts'
+      reset_password_instructions:
+        subject: 'Anleitung um das Passwort zurückzusetzten'
+      unlock_instructions:
+        subject: 'Anleitung um Ihren Account freizuschalten'
+

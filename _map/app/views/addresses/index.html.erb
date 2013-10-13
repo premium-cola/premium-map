@@ -1,0 +1,38 @@
+<div class="table_container">
+  <table class="zebra-striped sortable" id="addresses">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>Firma</th>
+      <th>Straße</th>
+      <th>Plz</th>
+      <th>Stadt</th>
+      <th>Land</th>
+      <th>Telefon</th>
+      <th>Web</th>
+      <th>Email</th>
+     </tr>
+    </thead>
+
+    <tbody>
+    <% @addresses.each do |address| %>
+      <tr id="address_<%= address.id %>" class='address_row'>
+        <td class="id_col"><%= address.id %></td>
+        <td class="first_name_col"><%= address.first_name %></td>
+        <td class="last_name_col"><%= address.last_name %></td>
+        <td class="company_col"><%= address.company %></td>
+        <td class="street_col"><%= address.street %></td>
+        <td class="zipcode_col"><%= address.zipcode %></td>
+        <td class="city_col"><%= address.city %></td>
+        <td class="country_col"><%= address.country %></td>
+        <td class="country_tel"><%= address.telephone %></td>
+        <td class="country_web"><%= address.web %></td>
+        <td class="country_mail"><%= address.email %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<%= will_paginate @addresses %>

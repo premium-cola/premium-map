@@ -1,0 +1,92 @@
+@mixin opacity-important($v: 1, $i: !important) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(#{$v*100}))" $i;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=($v*100)) $i;
+  opacity: $v $i;
+}
+
+@mixin opacity($v: 1) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=(#{$v*100}))";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=($v*100));
+  opacity: $v;
+}
+
+@mixin clearfix {
+  overflow: auto;
+  width: 100%;
+}
+
+@mixin arial {
+  font-family: 'Arial', sans-serif;  
+}
+
+@mixin roundedSides($topLeft, $topRight, $bottomRight, $bottomLeft) {
+  border-radius: $topLeft;
+  -moz-border-radius-topleft: $topLeft;
+  -moz-border-radius-topright: $topRight;
+  -moz-border-radius-bottomright: $bottomRight;
+  -moz-border-radius-bottomleft: $bottomLeft;
+  border-top-left-radius:$topLeft;
+  border-top-right-radius: $topRight;
+  border-bottom-right-radius: $bottomRight;
+  border-bottom-left-radius: $bottomLeft; 
+}
+
+@mixin rounded($radius: 10px) {
+  @include roundedSides($radius, $radius, $radius, $radius)
+}
+
+@mixin rounded-bottom($radius: 10px) {
+  @include roundedSides(0, 0, $radius, $radius)
+}
+
+
+@mixin shadow($off-y: 0, $off-x: 1px, $blur: 2px, $color: rgba(0, 0, 0, 0.5)){
+  -moz-box-shadow: $off-y $off-x $blur $color; 
+  -webkit-box-shadow:  $off-y $off-x $blur $color;
+  box-shadow:  $off-y $off-x $blur $color; 
+}
+
+@mixin text-shadow($off-y: 0, $off-x: 1px, $blur: 0px, $color: black){
+  -moz-text-shadow: $off-y $off-x $blur $color; 
+  -webkit-text-shadow:  $off-y $off-x $blur $color;
+  text-shadow:  $off-y $off-x $blur $color; 
+}
+
+
+@mixin inner-shadow($off-x: 0, $off-y: 1px, $blur: 3px, $color: rgba(0, 0, 0, .5)){
+  -moz-box-shadow: inset $off-x $off-y $blur $color; 
+  -webkit-box-shadow:  inset $off-x $off-y $blur $color;
+  box-shadow:  inset $off-x $off-y $blur $color; 
+}
+
+
+@mixin gradient($baseColor, $toColor){
+  background-color:$baseColor;
+  background-image: -moz-linear-gradient(top, $baseColor, $toColor);
+  background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, $baseColor),color-stop(1, $toColor)); 
+  background-image: linear-gradient(top,$baseColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$baseColor', EndColorStr='$toColor'); 
+}
+
+@mixin transition($duration: 0.3s, $property: all, $function: ease-out){
+  -moz-transition: $property $duration $function;
+  -o-transition: $property $duration $function;
+  -webkit-transition: $property $duration $function;
+  transition: $property $duration $function; 
+}
+
+@mixin no-transition(){
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -webkit-transition: none !important;
+  transition: none !important; 
+}
+
+
+@mixin transform($scale, $rotate, $trans-x, $trans-y, $skew-x, $skew-y){    
+  -moz-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+  -webkit-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+  -o-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+  -ms-transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+  transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) skew(skew-x, skew-y);
+}
