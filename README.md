@@ -8,7 +8,7 @@ Solltest du an der Karte gearbeitet haben und uns noch nicht bekannt sein, event
 
 Gerne gesehen wird auch Bugcheck/-fix, sowie die Erweiterung des Funktionsumfanges um 2 weitere Produkte
 
-## Den bisherigen Entwicklern gebürt unser Dank:
+## Den bisherigen Entwicklern gebührt unser Dank:
 **Bodo Tasche** <bodo.tasche@gmail.com> und
 **Nelson Darkwah Oppong** <ndo@felixnelson.de> 
 
