@@ -38,7 +38,11 @@ class Address < ActiveRecord::Base
   end
 
   def distance(point)
-    distance_from(point) * 1.609344
+    if distance_from(point).nil? 
+      1.609344  
+    else 
+      distance_from(point) * 1.609344
+    end
   end
 
   def self.parse_csv(file)
