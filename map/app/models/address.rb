@@ -91,13 +91,13 @@ class Address < ActiveRecord::Base
   end
 
   def self.parse_row(row)
-    groups = analyse_group(row[30])
+    groups = analyse_group(row[19])
     # Kein Sprecher, Veranstaltungsort oder Händler ? Raus!
     return nil if (groups & [7,8,9]).length == 0
     # Kein Getränk angegeben und kein Sprecher? Raus!
     return nil if (groups & [20,21,22,23]).length == 0 && !groups.include?(7)
 
-    web = row[27]
+    web = row[18]
     web = "http://#{web}" if !web.nil? && !web.starts_with?("http://")
 
     unless row[9].nil?
