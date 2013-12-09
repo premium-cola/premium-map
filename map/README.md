@@ -31,7 +31,7 @@ Sonst werden die Einstellung der anderen Programmierer ueberschrieben.
 
 In mysql muss die Datenbank rails_premium angelegt werden.
 
-rake db:migrate
+rake db:migrate RAILS_ENV=development
 
 Danach kann die Anwendung gestartet werden
 rails server
