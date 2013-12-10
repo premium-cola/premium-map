@@ -52,3 +52,29 @@ Um die Registrierungsoberflaech freizuschalten kann in der user.rb das Attribute
 :registerable
 ergaenzt werden.
 
+Janik 9.12.2013 4
+Commit zur Version 2.3 gemacht. Da sich die Rails Syntax geaender hat, mussten zwei config Dateien angepasst werden.
+config/initializers/wrap_parameters.rb
+config/initializers/session_store.rb
+Die Configsyntax fuer Rails Version 3 ist als Kommentar noch vorhanden.
+
+mit ruby -v oder rails -v lassen sich die installierten Versionen anschauen.
+Zum Zeitpunkt der Entwicklung war das
+ruby 1.9.3
+rails 3.2.13
+
+Eine Anleitung zur richtigen Versionsinstallation findet sich hier
+http://polyoperable.cmready.com/?p=300 
+
+Nachdem die Rails version 3.2.13 installiert wurde
+gem install rails -v 3.2.13 
+muste noch die Path Variable gesetzt werden, damit der Befehl rails erkannt wurde
+export PATH=$PATH:/var/lib/gems/1.9.1/bin
+
+Der Rails server kann so gestartet werden
+rails server -e production
+
+Janik 10.12.2013 3
+
+In Device 2 muessen die migrate Files angepasst werden
+https://github.com/plataformatec/devise/wiki/How-To:-Upgrade-to-Devise-2.0-migration-schema-style
