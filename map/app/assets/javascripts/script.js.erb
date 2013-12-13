@@ -160,7 +160,7 @@ $(function () {
   // on layer change
   $('#pf-layer-select').bind('change', function () {
     // extract search parameters
-    v = $('#pf-layer-select').attr('value').split('-');
+    v = $('#pf-layer-select').val().split('-');
 
     // set search vars
     PFSearch.type = v[0];
@@ -173,7 +173,7 @@ $(function () {
   // on country change
   $('#pf-country-select').bind('change', function () {
     // which country?
-    switch($('#pf-country-select').attr('value')) {
+    switch($('#pf-country-select').val()) {
       default:
         selected_lat = PFCountries.de.lat;
       selected_lng = PFCountries.de.lng;
@@ -189,7 +189,7 @@ $(function () {
     }
 
     // update search var
-    PFSearch.country = $('#pf-country-select').attr('value');
+    PFSearch.country = $('#pf-country-select').val();
     PFSearch.coord.lng = selected_lng;
     PFSearch.coord.lat = selected_lat;
 
@@ -300,14 +300,14 @@ $(function () {
 
   //search/geocoding
   $('#pf-search-now').bind('click', function () {
-    if ($('#pf-search-input').attr('value').length > 0 ) {
+    if ($('#pf-search-input').val().length > 0 ) {
       // disable form
       $('#pf-search-now, #pf-search-input').attr('disabled', 'disabled').addClass('disabled');
-      $('#pf-search-now').attr('value', 'Laden..');    
-      $.getJSON(PFUrls.geocoder + $('#pf-search-input').attr('value'), function(data) {
+      $('#pf-search-now').val('Laden..');    
+      $.getJSON(PFUrls.geocoder + $('#pf-search-input').val(), function(data) {
         // reset view
         $('#pf-search-now, #pf-search-input').removeAttr('disabled').removeClass('disabled');
-        $('#pf-search-now').attr('value', 'Suchen');    
+        $('#pf-search-now').val('Suchen');    
 
         if (data.result == 'ok') {
           // zoom map

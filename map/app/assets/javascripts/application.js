@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require modernizr
 
 $(function() {
   if ($(".alert-message") !== null) {
