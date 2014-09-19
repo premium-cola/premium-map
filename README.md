@@ -1,28 +1,30 @@
-# Welcome
+# Premium Finder
 
-Dies ist der Code hinter dem "Finder" auf premium-cola.de
+Dies ist der Code des Premium Finders. In dem Finder lassen
+sich Händler, Läden und Sprecher von Premium finden.
 
-Die Karte kann unter diese Link angeschaut werden.
-http://premiumc.cygnus.uberspace.de/maps/embed#!/de/d/c/51.17934297928927,10.4589843$
+Die Karte kann
+[Hier](https://premiumc.cygnus.uberspace.de/maps/embed "Premium Finder")
+angesehen werden.
 
-Janik 6.12.2013 - 3
 
-Die Anwendung ist in Ruby on Rails geschrieben
+## Entwickler
 
-sudo apt-get install ruby1.9.1-dev
-sudo apt-get install build-essential g++
-sudo apt-get install libmysql-ruby libmysqlclient-dev
-sudo apt-get install libsqlite3-dev
-sudo apt-get install mysql
+* Bodo Tasche <bodo.tasche@gmail.com> und
+* Nelson Darkwah Oppong <ndo@felixnelson.de> 
 
-gem install bundler
+Vielen Dank!
 
-in Gemfile.lock eventmaschine Version auf 1.0.3 aendern
-in Gemfile.lock thin Version auf 1.6.1 aendern
+## Installation
 
-bundle install
+```bash
+  $ apt-get install ruby1.9.1-dev build-essential g++ libmysql-ruby libmysqlclient-dev libsqlite3-dev mysql
+  $ gem install bundler
+  $ bundle install
+```
 
-Danach sollte der Befehl durchlaufen. Ansonsten kann gesucht werden, welche Abhaengi$
+_(apt-get install muss natürlich als root ausgeführt
+werden)_
 
 In der config/database.yml stehen die Datenbankverbindungen.
 Diese kann man auf die eigenen Einstellungen anpassen.
@@ -34,14 +36,14 @@ In mysql muss die Datenbank rails_premium angelegt werden.
 rake db:migrate RAILS_ENV=development
 
 Danach kann die Anwendung gestartet werden
-rails server
+$ rails server
 
-Ueber den Browser ist nun unter localhost:3000 die Anwendung aufrufbar
+Über den Browser ist nun unter localhost:3000 die Anwendung aufrufbar
 Die Ansicht der Karte ist abrufbar unter
 localhost:3000/maps/embed
 
 Um alle URLs (Routen) zu finden kann folgenden ausgefuehrt werden
-rake routes
+`$ rake routes`
 
 Um rails Befehle auszuführen, kann folgender Befehl ausgefuehrt werden
 rails console
@@ -73,8 +75,6 @@ export PATH=$PATH:/var/lib/gems/1.9.1/bin
 
 Der Rails server kann so gestartet werden
 rails server -e production
-
-Janik 10.12.2013 3
 
 In Device 2 muessen die migrate Files angepasst werden
 https://github.com/plataformatec/devise/wiki/How-To:-Upgrade-to-Devise-2.0-migration-schema-style
