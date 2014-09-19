@@ -156,6 +156,15 @@ body {
   .pf-button {
     float: right; } }
 
+/* Those must both have the same hight */
+#pf-search-input {
+  font-size: 16px;
+}
+#pf-search-now {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
 #pf-map-tab {
   #pf-map {
     @include rounded(3px);
