@@ -1,5 +1,7 @@
 # Premium Finder
 
+This project contains the premi
+
 Dies ist der Code des Premium Finders. In dem Finder lassen
 sich Händler, Läden und Sprecher von Premium finden.
 
@@ -10,7 +12,13 @@ angesehen werden.
 
 ## Entwickler
 
-* Bodo Tasche <bodo.tasche@gmail.com> und
+### Current
+
+* Karolin Varner <karo@cupdev.net>
+
+### Former
+
+* Bodo Tasche <bodo.tasche@gmail.com>
 * Nelson Darkwah Oppong <ndo@felixnelson.de> 
 
 Vielen Dank!
@@ -78,3 +86,23 @@ rails server -e production
 
 In Device 2 muessen die migrate Files angepasst werden
 https://github.com/plataformatec/devise/wiki/How-To:-Upgrade-to-Devise-2.0-migration-schema-style
+
+# COPYRIGHT
+
+Copyright 2014 by Karolin Varner <karo@cupdev.net>
+Copyright 2013-2014 by Bodo Tasche <bodo.tasche@gmail.com>
+Copyright 2013-2014 by Nelson Darkwah Oppong <ndo@felixnelson.de> 
+
+This project was created on behalf of
+[PREMIUM](http://www.premium-cola.de/).
+
+The contents of this repository are licensed under the GPL
+license version three or higher version.
+
+In addition to the terms of the GPL license, any Authors of
+this project and PREMIUM must be named in derivatives of
+this Software.
+Neither any authors nor PREMIUM my be named in order to
+endorse any product based on the work in this repository.
+
+See the COPYING file for a copy of the GPLv3 license.
