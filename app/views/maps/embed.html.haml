@@ -22,6 +22,8 @@
         %div.pf-interface
           %span.pf-desc
             Ich suche nach
+          // `geojson#geojson`, but first pf-search-input is
+          // going to be parsed with `geocoder#geocoder`
           %select#pf-layer-select
             %option{:value => 'd-c'} Händlern - Cola
             %option{:value => 'd-b'} Händlern - Bier
@@ -29,8 +31,9 @@
             %option{:value => 'l-c'} Läden - Cola
             %option{:value => 'l-b'} Läden - Bier
 
-            %option{:value => 's-c'} Sprechern - Cola
-            %option{:value => 's-b'} Sprechern - Bier
+            // X means 'no particular product'. carpe diem.
+            // seee the controller for the ugly reason hwo
+            %option{:value => 's-x'} Sprechern
           in
           %select#pf-country-select
             %option{:value => 'de'} Deutschland
