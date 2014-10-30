@@ -135,8 +135,8 @@ $(function () {
   var PFMap = new L.Map('pf-map');
 
   // init cloudmade
-  var PFCloudmadeUrl = 'http://{s}.tile.cloudmade.com/efcc32619c8749aeaba98e33d98dd195/997/256/{z}/{x}/{y}.png',
-  PFCloudmadeAttrib = 'Map data &copy; '+new Date().getFullYear()+' OpenStreetMap, &copy; '+new Date().getFullYear()+' CloudMade',
+  var PFCloudmadeUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+  PFCloudmadeAttrib = 'Map data &copy; '+new Date().getFullYear()+' OpenStreetMap, &copy; '+new Date().getFullYear(),
   PFCloudmade = new L.TileLayer(PFCloudmadeUrl, {maxZoom: 18, attribution: PFCloudmadeAttrib});
 
   // init map
