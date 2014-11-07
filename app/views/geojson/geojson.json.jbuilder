@@ -17,13 +17,16 @@ json.features @addresses do |json, address|
       json.street address.street
       json.city address.city
       json.zipcode address.zipcode
-      json.telephone address.telephone
     end
+    
 
     json.country address.country
     json.web address.web
     json.email address.email
+    json.telephone address.telephone
+
     json.products address.products
+
     json.distance address.distance(@geopoint)
   end
 
