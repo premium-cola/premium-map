@@ -2,10 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-gem 'mysql2'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -66,14 +62,8 @@ group :development do
   gem 'vlad', :require => false
   gem 'vlad-git', :require => false
   gem 'rake-remote_task', '~> 2.1.0'
-
-  gem 'mysql2'
 end
 
 gem 'awesome_print'
 
-group :test do
-  # Pretty printed test output
-#  gem 'turn', :require => false
-  gem 'sqlite3'
-end
+gem 'sqlite3'
