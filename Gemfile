@@ -17,9 +17,6 @@ end
 
 gem 'jquery-rails'
 
-# Deployment on premium cola
-gem 'passenger'
-
 # Asset template engines
 gem 'coffee-script', '~> 2.2.0'
 gem 'haml', '~> 3.2.0.alpha.8'
@@ -28,8 +25,7 @@ gem 'redcarpet', '~> 2.0.0b'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -62,9 +58,6 @@ gem 'acts-as-taggable-on', '~>2.1.0'
 # Javascript runtime for asset compilation on target system
 gem 'execjs'
 gem 'therubyracer'
-
-gem 'thin'
-#gem 'foreman'
 
 # Caching
 gem 'memcache-client'
