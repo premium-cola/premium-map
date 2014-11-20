@@ -135,9 +135,9 @@ $(function () {
   var PFMap = new L.Map('pf-map');
 
   // init cloudmade
-  var PFCloudmadeUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-  PFCloudmadeAttrib = 'Map data &copy; '+new Date().getFullYear()+' OpenStreetMap,
-  PFCloudmade = new L.TileLayer(PFCloudmadeUrl, {maxZoom: 18, attribution: PFCloudmadeAttrib});
+  var PFCloudmadeUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
+  var PFCloudmadeAttrib = 'Map data &copy; ' + new Date().getFullYear() + ' OpenStreetMap,';
+  var PFCloudmade = new L.TileLayer(PFCloudmadeUrl, {maxZoom: 18, attribution: PFCloudmadeAttrib});
 
   // init map
   var PFStart = new L.LatLng(PFSearch.coord.lat, PFSearch.coord.lng);
