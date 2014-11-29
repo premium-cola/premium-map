@@ -22,7 +22,7 @@ run:
   $ apt-get install ruby1.9.1-dev build-essential g++ libmysql-ruby libmysqlclient-dev libsqlite3-dev mysql
   $ gem install bundler
   $ bundle install
-  $ rake db:migrate RAILS_ENV=development
+  $ bundle exec rake db:reset
   $ rails server
 ```
 
@@ -33,10 +33,9 @@ You should now be able to visit the application:
 http://localhost:3000
 To visit the actual maps: http://localhost:3000/maps/embed
 
-In order to register a user and test it you have to add the
-devise component _:registerable_ to the user model.
-Please do not commit this change. We do not want people to
-register themselves in production.
+If you are in development mode, a user for testing should
+already have been created. You can login as 'adm@adm' with
+the password 'password'.
 
 We are using very old gems here. If you run into problems
 finding some of the very old ones, they should be provided
