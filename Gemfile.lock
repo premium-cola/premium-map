@@ -56,6 +56,7 @@ GEM
     haml (3.2.0.alpha.10)
     hike (1.2.1)
     i18n (0.6.1)
+    iconv (1.0.4)
     jbuilder (0.8.2)
       activesupport (>= 3.0.0)
     journey (1.0.4)
@@ -161,6 +162,7 @@ DEPENDENCIES
   execjs
   geocoder
   haml (~> 3.2.0.alpha.8)
+  iconv
   jbuilder (~> 0.8.2)
   jquery-rails
   memcache-client
