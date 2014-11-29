@@ -101,8 +101,8 @@ $(function () {
 
   // custom marker
   var PFIcon = L.Icon.extend({
-    iconUrl: '<%= asset_path 'leaflet/marker-small.png' %>',
-    shadowUrl: '<%= asset_path 'leaflet/marker-shadow-small.png' %>',
+    iconUrl: '/assets/leaflet/marker-small.png',
+    shadowUrl: '/assets/leaflet/marker-shadow-small.png',
     iconSize: new L.Point(19, 31),
     shadowSize: new L.Point(31, 31),
     iconAnchor: new L.Point(9, 31),
