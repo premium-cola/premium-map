@@ -23,7 +23,7 @@ run:
   $ gem install bundler
   $ bundle install
   $ bundle exec rake db:reset
-  $ rails server
+  $ bundle exec unicorn -l 127.0.0.1:3000
 ```
 
 _(apt-get install has to be run as root)_
@@ -33,9 +33,7 @@ You should now be able to visit the application:
 http://localhost:3000
 To visit the actual maps: http://localhost:3000/maps/embed
 
-If you are in development mode, a user for testing should
-already have been created. You can login as 'adm@adm' with
-the password 'password'.
+You can logi
 
 We are using very old gems here. If you run into problems
 finding some of the very old ones, they should be provided
