@@ -59,8 +59,6 @@ gem 'therubyracer'
 gem 'memcache-client'
 
 group :development do
-  gem 'vlad', :require => false
-  gem 'vlad-git', :require => false
   gem 'rake-remote_task', '~> 2.1.0'
 end
 

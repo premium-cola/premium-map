@@ -138,11 +138,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    vlad (2.4.1)
-      rake (>= 0.8, < 11.0)
-      rake-remote_task (~> 2.1)
-    vlad-git (2.2.0)
-      vlad (>= 2.1.0)
     warden (1.1.0)
       rack (>= 1.0)
     will_paginate (3.0.3)
@@ -176,6 +171,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn
-  vlad
-  vlad-git
   will_paginate
