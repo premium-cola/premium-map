@@ -291,8 +291,7 @@ class Geocoder
 
 class Map
   @search: (what) ->
-    if what.length <= 0
-      alert "Bitte geben Sie eine Adresse zum Suchen ein!"
+    return if what.length <= 0
 
     # disable form
     $("#pf-search-now, #pf-search-input").attr("disabled", "disabled").addClass "disabled"
