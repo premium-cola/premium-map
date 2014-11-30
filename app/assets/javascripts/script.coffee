@@ -64,7 +64,7 @@ $ ->
 
   # search var
   PFSearch =
-    string: (PFShebangData[4] or "51.165691,10.451526")
+    where: (PFShebangData[4] or "51.165691,10.451526")
     country: (PFShebangData[1] or "de")
     type: (PFShebangData[2] or "d")
     product: (PFShebangData[3] or "c")
@@ -73,7 +73,7 @@ $ ->
       lat: 0
       lng: 0
 
-  PFlatlng = PFSearch.string.split(",")
+  PFlatlng = PFSearch.where.split(",")
   PFSearch.coord.lat = parseFloat(PFlatlng[0])
   PFSearch.coord.lng = parseFloat(PFlatlng[1])
 
@@ -203,8 +203,7 @@ $ ->
 
     # add loading class
     #$('#pf-search-form .pf-loading').show();
-    $.getJSON PFUrls.geojson + PFSearch.country + "/" + PFSearch.type + "/" + PFSearch.product + "/near/" + PFSearch.string, (data) ->
-
+    Geocoder.search PFSearch, (data) ->
       # geoJSON Layer
       PFGeoJSONLayer = new L.GeoJSON null,
         pointToLayer: (latlng) ->
@@ -286,6 +285,12 @@ $ ->
   $("#pf-map").trigger "update"
 
 class Geocoder
+  @search: (d, cb) ->
+    url = "#{PFUrls.geojson}" +
+          "/#{d.country}/#{d.type}/#{d.product}" +
+          "/near/#{d.where}"
+    $.getJSON url, cb
+
   @locate: (what, cb) ->
     $.getJSON "#{PFUrls.geocoder}/#{what}", cb
 
@@ -311,7 +316,7 @@ class Map
       # zoom map
       search_result = new L.LatLng(data.coord.lat, data.coord.lng)
       PFMap.setView search_result, 15
-      PFSearch.string = data.coord.lat + "," + data.coord.lng
+      PFSearch.where = data.coord.lat + "," + data.coord.lng
       $("#pf-map").trigger "update"
 
 $(window).ready ->
