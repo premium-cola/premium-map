@@ -1,6 +1,8 @@
 #= require jquery
 #= require_tree ./lib
 
+PFLocationHash = PFCircle = PFCloudmade = PFCloudmadeAttrib = PFCloudmadeUrl = PFCountries = PFIcon = PFLayerGroup = PFMap = PFSearch = PFShebangData = PFStart = PFUrls = PFlatlng = null
+
 jQuery.extend jQuery.browser,
   mobile: navigator.userAgent.toLowerCase().match(/iPad|iPhone|Android/i)
 
@@ -29,8 +31,6 @@ $ ->
       t.addClass "pf-current"
 
     false
-
-  # PF Map
 
   # format distance
   $.fn.extend formatDistance: ->
@@ -285,33 +285,38 @@ $ ->
   # initial update
   $("#pf-map").trigger "update"
 
-  #search/geocoding
-  $("#pf-search-now").bind "click", ->
-    if $("#pf-search-input").val().length > 0
+class Geocoder
+  @locate: (what, cb) ->
+    $.getJSON "#{PFUrls.geocoder}/#{what}", cb
 
-      # disable form
-      $("#pf-search-now, #pf-search-input").attr("disabled", "disabled").addClass "disabled"
-      $("#pf-search-now").val "Laden.."
-      $.getJSON PFUrls.geocoder + $("#pf-search-input").val(), (data) ->
+class Map
+  @search: (what) ->
+    if what.length <= 0
+      alert "Bitte geben Sie eine Adresse zum Suchen ein!"
 
-        # reset view
-        $("#pf-search-now, #pf-search-input").removeAttr("disabled").removeClass "disabled"
-        $("#pf-search-now").val "Suchen"
-        if data.result is "ok"
+    # disable form
+    $("#pf-search-now, #pf-search-input").attr("disabled", "disabled").addClass "disabled"
+    $("#pf-search-now").val "Laden.."
 
-          # zoom map
-          search_result = new L.LatLng(data.coord.lat, data.coord.lng)
-          PFMap.setView search_result, 15
-          PFSearch.string = data.coord.lat + "," + data.coord.lng
-          $("#pf-map").trigger "update"
-        else
-          alert "Leider wurde kein Ort zu Ihrer Eingabe gefunden!"
-          $("#pf-search-input").trigger "focus"
+    Geocoder.locate what, (data) ->
+
+      # reset view
+      $("#pf-search-now, #pf-search-input").removeAttr("disabled").removeClass "disabled"
+      $("#pf-search-now").val "Suchen"
+
+      if data.result != "ok"
+        alert "Leider wurde kein Ort zu Ihrer Eingabe gefunden!"
+        $("#pf-search-input").trigger "focus"
         return
 
-    else
-      alert "Bitte geben Sie eine Adresse zum Suchen ein!"
+      # zoom map
+      search_result = new L.LatLng(data.coord.lat, data.coord.lng)
+      PFMap.setView search_result, 15
+      PFSearch.string = data.coord.lat + "," + data.coord.lng
+      $("#pf-map").trigger "update"
+
+$(window).ready ->
+  console.log "READY!"
+  $("#pf-search-now").bind "click", ->
+    Map.search $("#pf-search-input").val()
     false
-
-  return
-
