@@ -298,16 +298,7 @@ class Map
   @search: (what) ->
     return if what.length <= 0
 
-    # disable form
-    $("#pf-search-now, #pf-search-input").attr("disabled", "disabled").addClass "disabled"
-    $("#pf-search-now").val "Laden.."
-
     Geocoder.locate what, (data) ->
-
-      # reset view
-      $("#pf-search-now, #pf-search-input").removeAttr("disabled").removeClass "disabled"
-      $("#pf-search-now").val "Suchen"
-
       if data.result != "ok"
         alert "Leider wurde kein Ort zu Ihrer Eingabe gefunden!"
         $("#pf-search-input").trigger "focus"
@@ -321,6 +312,7 @@ class Map
 
 $(window).ready ->
   console.log "READY!"
+  # TODO: Prevent multiple at the same time?
   $("#pf-search-now").bind "click", ->
     Map.search $("#pf-search-input").val()
     false
