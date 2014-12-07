@@ -1,7 +1,26 @@
 #= require jquery
 #= require_tree ./lib
 
-PFLocationHash = PFCircle = PFCloudmade = PFCloudmadeAttrib = PFCloudmadeUrl = PFCountries = PFIcon = PFLayerGroup = PFMap = PFSearch = PFShebangData = PFStart = PFUrls = PFlatlng = null
+PFLocationHash = PFCircle = PFCloudmade = null
+PFCloudmadeAttrib = PFCloudmadeUrl = PFIcon = null
+PFLayerGroup = PFMap = PFSearch = PFShebangData = null
+PFStart = PFlatlng = null
+
+PFCountries =
+  de:
+    lng: 10.451526
+    lat: 51.165691
+  at:
+    lng: 14.550072
+    lat: 47.516231
+  ch:
+    lng: 8.227512
+    lat: 46.818188
+
+PFUrls =
+  geocoder: "/geocoder?q="
+  geojson: "/geojson/"
+  route: "http://maps.google.com/maps?hl=de&daddr="
 
 jQuery.extend jQuery.browser,
   mobile: navigator.userAgent.toLowerCase().match(/iPad|iPhone|Android/i)
@@ -16,7 +35,6 @@ $ ->
     scriptCharset: "utf-8"
     contentType: "application/json; charset=utf-8"
 
-
   # Mobile CSS
   # TODO: We have content types for this (gosh)
   $("body").addClass "mobile"  if $.browser.mobile
@@ -29,8 +47,6 @@ $ ->
       $("#pf-tab-bar a").removeClass "pf-current"
       $("#pf-" + t.attr("id").split("-")[1] + "-tab").show()
       t.addClass "pf-current"
-
-    false
 
   # format distance
   $.fn.extend formatDistance: ->
@@ -90,26 +106,6 @@ $ ->
     iconAnchor: new L.Point(9, 31)
     popupAnchor: new L.Point(-8, -31)
   )
-  PFUrls =
-    geocoder: "/geocoder?q="
-    geojson: "/geojson/"
-    route: "http://maps.google.com/maps?hl=de&daddr="
-
-
-  # countries coords
-  PFCountries =
-    de:
-      lng: 10.451526
-      lat: 51.165691
-
-    at:
-      lng: 14.550072
-      lat: 47.516231
-
-    ch:
-      lng: 8.227512
-      lat: 46.818188
-
 
   # create map
   PFMap = new L.Map("pf-map")
@@ -117,10 +113,9 @@ $ ->
   # init cloudmade
   PFCloudmadeUrl = "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
   PFCloudmadeAttrib = "Map data &copy; " + new Date().getFullYear() + " OpenStreetMap,"
-  PFCloudmade = new L.TileLayer(PFCloudmadeUrl,
+  PFCloudmade = new L.TileLayer PFCloudmadeUrl,
     maxZoom: 18
     attribution: PFCloudmadeAttrib
-  )
 
   # init map
   PFStart = new L.LatLng(PFSearch.coord.lat, PFSearch.coord.lng)
@@ -128,11 +123,11 @@ $ ->
 
   # add red circle if highlight option
   if PFShebangData[6] is "highlight"
-    PFCircle = new L.Circle(PFStart, 100,
+    PFCircle = new L.Circle PFStart, 100,
       color: "red"
       fillColor: "transparent"
       fillOpacity: 0.75
-    )
+
     PFMap.addLayer PFCircle
 
   # map layer group
@@ -181,14 +176,12 @@ $ ->
       $("#pf-results-load-more-link").hide()
     else
       $("#pf-results-load-more-link").show()
-    return
 
   $("#pf-results-load-more-link").click ->
     $("#pf-results").trigger "load-more"
 
     #smooth scroll to bottom
     $("html, body").animate {scrollTop: $(window).scrollTop() + 120}, d
-    false
 
   # initial update
   Map.update()
