@@ -181,25 +181,16 @@ $ ->
     $("#pf-map").trigger "update"
     return
 
-  $("#pf-map").bind "update-shebang", ->
-    window.location.hash = \
-        "!/" + PFSearch.country + "/" + PFSearch.type +
-        "/" + PFSearch.product + "/" + PFMap.getCenter().lat +
-        "," + PFMap.getCenter().lng + "/" + PFMap.getZoom()
 
   # update shebang on zoom and move
-  PFMap.on "zoomend", ->
-    $("#pf-map").trigger "update-shebang"
-    return
-
-  PFMap.on "moveend", ->
-    $("#pf-map").trigger "update-shebang"
+  PFMap.on "zoomend", Map.updateShebang
+  PFMap.on "moveend", Map.updateShebang
 
   # update map
   $("#pf-map").bind "update", ->
 
     # update shebang hash
-    $("#pf-map").trigger "update-shebang"
+    Map.updateShebang()
 
     # add loading class
     #$('#pf-search-form .pf-loading').show();
@@ -295,6 +286,12 @@ class Geocoder
     $.getJSON "#{PFUrls.geocoder}/#{what}", cb
 
 class Map
+  @updateShebang: ->
+    window.location.hash = \
+        "!/#{PFSearch.country}/#{PFSearch.type}" +
+        "/#{PFSearch.product}/#{PFMap.getCenter().lat}" +
+        ",#{PFMap.getCenter().lng}/#{PFMap.getZoom()}"
+
   @search: (what) ->
     return if what.length <= 0
 
