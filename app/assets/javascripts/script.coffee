@@ -155,32 +155,7 @@ $ ->
 
   # on country change
   $("#pf-country-select").bind "change", ->
-
-    # which country?
-    switch $("#pf-country-select").val()
-      when "at"
-        selected_lat = PFCountries.at.lat
-        selected_lng = PFCountries.at.lng
-      when "ch"
-        selected_lat = PFCountries.ch.lat
-        selected_lng = PFCountries.ch.lng
-      else
-        selected_lat = PFCountries.de.lat
-        selected_lng = PFCountries.de.lng
-
-    # update search var
-    PFSearch.country = $("#pf-country-select").val()
-    PFSearch.coord.lng = selected_lng
-    PFSearch.coord.lat = selected_lat
-
-    # pan+zoom country
-    selected_country = new L.LatLng(selected_lat, selected_lng)
-    PFMap.setView selected_country, 5
-
-    # update
-    $("#pf-map").trigger "update"
-    return
-
+    Map.setCountry $("#pf-country-select").val()
 
   # update shebang on zoom and move
   PFMap.on "zoomend", Map.updateShebang
@@ -286,6 +261,32 @@ class Geocoder
     $.getJSON "#{PFUrls.geocoder}/#{what}", cb
 
 class Map
+  @setCountry: (c) ->
+    # which country?
+    switch c
+      when "at"
+        selected_lat = PFCountries.at.lat
+        selected_lng = PFCountries.at.lng
+      when "ch"
+        selected_lat = PFCountries.ch.lat
+        selected_lng = PFCountries.ch.lng
+      else
+        c = "de"
+        selected_lat = PFCountries.de.lat
+        selected_lng = PFCountries.de.lng
+
+    # update search var
+    PFSearch.country = c
+    PFSearch.coord.lng = selected_lng
+    PFSearch.coord.lat = selected_lat
+
+    # pan+zoom country
+    selected_country = new L.LatLng(selected_lat, selected_lng)
+    PFMap.setView selected_country, 5
+
+    # update
+    $("#pf-map").trigger "update"
+
   @updateShebang: ->
     window.location.hash = \
         "!/#{PFSearch.country}/#{PFSearch.type}" +
