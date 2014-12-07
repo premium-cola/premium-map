@@ -26,7 +26,6 @@ jQuery.extend jQuery.browser,
   mobile: navigator.userAgent.toLowerCase().match(/iPad|iPhone|Android/i)
 
 $ ->
-  d = 250
   $("input[placeholder], textarea[placeholder]").placeholder()
   $("#pf-container").removeClass "nojs"
 
@@ -146,45 +145,35 @@ $ ->
   PFMap.on "zoomend", Map.updateShebang
   PFMap.on "moveend", Map.updateShebang
 
-  # remove loading class
-  #$('#pf-search-form .pf-loading').hide();
-
-  # load 3 more items to the pf-results list
-  $("#pf-results").bind "load-more", ->
-
-    # display 3 more items
-    i = 0
-    while i < 3
-      if PFSearch.items.length > 0
-
-        # add route url
-        p = PFSearch.items.pop().properties
-        p.routeUrl = PFUrls.route + escape(p.street) + ",+" + escape(p.city) + ",+" + escape(p.country)
-
-        # render element
-        $(this).append Mustache.render(PFListItemTemplate, p)
-
-        # fade in element
-        $("#pf-results li:last-child").fadeOut(0).fadeIn 2 * d
-
-        # format
-        $("#pf-results li:last-child .pf-distance").formatDistance()
-      i++
-
-    # hide link if no more items
-    if PFSearch.items.length is 0
-      $("#pf-results-load-more-link").hide()
-    else
-      $("#pf-results-load-more-link").show()
-
   $("#pf-results-load-more-link").click ->
-    $("#pf-results").trigger "load-more"
-
-    #smooth scroll to bottom
-    $("html, body").animate {scrollTop: $(window).scrollTop() + 120}, d
+    Phonebook.loadMore()
+    $("html, body").animate \
+      {scrollTop: $(window).scrollTop() + 120}, 250
 
   # initial update
   Map.update()
+
+class Phonebook
+  @loadMore: (n=3) ->
+    for i in [0..n] when PFSearch.items.length > 0
+      # add route url
+      p = PFSearch.items.pop().properties
+      p.routeUrl = PFUrls.route + escape(p.street) + ",+" + escape(p.city) + ",+" + escape(p.country)
+
+      # render element
+      $("#pf-results").append Mustache.render(PFListItemTemplate, p)
+
+      # fade in element
+      $("#pf-results li:last-child").fadeOut(0).fadeIn 2 * 250
+
+      # format
+      $("#pf-results li:last-child .pf-distance").formatDistance()
+
+    # hide link if no more items
+    if PFSearch.items.length == 0
+      $("#pf-results-load-more-link").hide()
+    else
+      $("#pf-results-load-more-link").show()
 
 class Geocoder
   @search: (d, cb) ->
@@ -286,7 +275,7 @@ class Map
       $("#pf-results li").remove()
 
       # display first 3 list elements
-      $("#pf-results").trigger "load-more"
+      Phonebook.loadMore();
 
       # close all open popups
       $("a.leaflet-popup-close-button").trigger "click"
