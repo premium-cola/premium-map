@@ -29,11 +29,6 @@ $ ->
   $("input[placeholder], textarea[placeholder]").placeholder()
   $("#pf-container").removeClass "nojs"
 
-  # utf-8!
-  $.ajaxSetup
-    scriptCharset: "utf-8"
-    contentType: "application/json; charset=utf-8"
-
   # Mobile CSS
   # TODO: We have content types for this (gosh)
   $("body").addClass "mobile"  if $.browser.mobile
