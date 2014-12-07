@@ -33,7 +33,8 @@ You should now be able to visit the application:
 http://localhost:3000
 To visit the actual maps: http://localhost:3000/maps/embed
 
-You can logi
+In development you should now be able to login with as
+dev@dev with the password 'password'.
 
 We are using very old gems here. If you run into problems
 finding some of the very old ones, they should be provided
