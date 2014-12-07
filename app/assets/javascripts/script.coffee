@@ -151,53 +151,6 @@ $ ->
   PFMap.on "zoomend", Map.updateShebang
   PFMap.on "moveend", Map.updateShebang
 
-  # update map
-  $("#pf-map").bind "update", ->
-
-    # update shebang hash
-    Map.updateShebang()
-
-    # add loading class
-    #$('#pf-search-form .pf-loading').show();
-    Geocoder.search PFSearch, (data) ->
-      # geoJSON Layer
-      PFGeoJSONLayer = new L.GeoJSON null,
-        pointToLayer: (latlng) ->
-          new L.Marker latlng,
-            icon: new PFIcon
-
-      # bind Popups
-      PFGeoJSONLayer.on "featureparse", (e) ->
-        e.layer.bindPopup Mustache.render(PFPopupTemplate, e.properties)  if e.properties
-        return
-
-      # clear old layers and add new layer
-      PFLayerGroup.clearLayers()
-      PFLayerGroup.addLayer PFGeoJSONLayer
-      PFGeoJSONLayer.addGeoJSON data
-
-      # update search var
-      PFSearch.items = data.features.reverse()
-
-      # if found, hide no-results div
-      if data.features.length > 0
-        $("#pf-no-results").hide()
-      else
-        $("#pf-no-results").show()
-
-      # clear list
-      $("#pf-results li").remove()
-
-      # display first 3 list elements
-      $("#pf-results").trigger "load-more"
-
-      # close all open popups
-      $("a.leaflet-popup-close-button").trigger "click"
-      return
-
-    return
-
-
   # remove loading class
   #$('#pf-search-form .pf-loading').hide();
 
@@ -238,7 +191,7 @@ $ ->
     false
 
   # initial update
-  $("#pf-map").trigger "update"
+  Map.update()
 
 class Geocoder
   @search: (d, cb) ->
@@ -274,8 +227,7 @@ class Map
     selected_country = new L.LatLng(selected_lat, selected_lng)
     PFMap.setView selected_country, 5
 
-    # update
-    $("#pf-map").trigger "update"
+    Map.update()
 
   @setFuckedUpSelection: (fuck) ->
     # extract search parameters
@@ -284,7 +236,7 @@ class Map
     PFSearch.type = v[0]
     PFSearch.product = v[1]
 
-    $("#pf-map").trigger "update"
+    Map.update()
 
   @updateShebang: ->
     window.location.hash = \
@@ -305,10 +257,48 @@ class Map
       search_result = new L.LatLng(data.coord.lat, data.coord.lng)
       PFMap.setView search_result, 15
       PFSearch.where = data.coord.lat + "," + data.coord.lng
-      $("#pf-map").trigger "update"
+      Map.update()
+
+  @update: ->
+    Map.updateShebang()
+
+    # add loading class
+    Geocoder.search PFSearch, (data) ->
+      # geoJSON Layer
+      PFGeoJSONLayer = new L.GeoJSON null,
+        pointToLayer: (latlng) ->
+          new L.Marker latlng,
+            icon: new PFIcon
+
+      # bind Popups
+      PFGeoJSONLayer.on "featureparse", (e) ->
+        e.layer.bindPopup Mustache.render(PFPopupTemplate, e.properties)  if e.properties
+        return
+
+      # clear old layers and add new layer
+      PFLayerGroup.clearLayers()
+      PFLayerGroup.addLayer PFGeoJSONLayer
+      PFGeoJSONLayer.addGeoJSON data
+
+      # update search var
+      PFSearch.items = data.features.reverse()
+
+      # if found, hide no-results div
+      if data.features.length > 0
+        $("#pf-no-results").hide()
+      else
+        $("#pf-no-results").show()
+
+      # clear list
+      $("#pf-results li").remove()
+
+      # display first 3 list elements
+      $("#pf-results").trigger "load-more"
+
+      # close all open popups
+      $("a.leaflet-popup-close-button").trigger "click"
 
 $(window).ready ->
-  console.log "READY!"
   # TODO: Prevent multiple at the same time?
   $("#pf-search-now").bind "click", ->
     Map.search $("#pf-search-input").val()
