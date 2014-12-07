@@ -25,6 +25,29 @@ PFUrls =
 jQuery.extend jQuery.browser,
   mobile: navigator.userAgent.toLowerCase().match(/iPad|iPhone|Android/i)
 
+# format distance
+jQuery.fn.extend formatDistance: ->
+  number = @html()
+
+  distance_regexp = /[0-9]*\.[0-9]*(km|m)/
+
+  if distance_regexp.test(number)
+    $.error "formatDistance(): Already formatted"
+
+  if parseInt(number)
+    if number > 1
+      result = parseInt(Math.ceil(number * 10)) / 10 + "km"
+    else if number > 10
+      result = parseInt(Math.ceil(number)) + "km"
+    else
+      result = parseInt(number * 1000) + "m"
+
+    @html result
+  else
+    $.error "formatDistance(): Not a float or int"
+
+  this
+
 $ ->
   $("input[placeholder], textarea[placeholder]").placeholder()
   $("#pf-container").removeClass "nojs"
@@ -41,29 +64,6 @@ $ ->
       $("#pf-tab-bar a").removeClass "pf-current"
       $("#pf-" + t.attr("id").split("-")[1] + "-tab").show()
       t.addClass "pf-current"
-
-  # format distance
-  $.fn.extend formatDistance: ->
-    number = @html()
-
-    distance_regexp = /[0-9]*\.[0-9]*(km|m)/
-
-    if distance_regexp.test(number)
-      $.error "formatDistance(): Already formatted"
-
-    if parseInt(number) #
-      if number > 1
-        result = parseInt(Math.ceil(number * 10)) / 10 + "km"
-      else if number > 10
-        result = parseInt(Math.ceil(number)) + "km"
-      else
-        result = parseInt(number * 1000) + "m"
-
-      @html result
-    else
-      $.error "formatDistance(): Not a float or int"
-
-    this
 
   PFLocationHash = window.location.hash.split("#!")
   PFShebangData = []
