@@ -141,17 +141,7 @@ $ ->
 
   # on layer change
   $("#pf-layer-select").bind "change", ->
-
-    # extract search parameters
-    v = $("#pf-layer-select").val().split("-")
-
-    # set search vars
-    PFSearch.type = v[0]
-    PFSearch.product = v[1]
-
-    # update map
-    $("#pf-map").trigger "update"
-    return
+    Map.setFuckedUpSelection $("#pf-layer-select").val()
 
   # on country change
   $("#pf-country-select").bind "change", ->
@@ -285,6 +275,15 @@ class Map
     PFMap.setView selected_country, 5
 
     # update
+    $("#pf-map").trigger "update"
+
+  @setFuckedUpSelection: (fuck) ->
+    # extract search parameters
+    v = fuck.split '-'
+
+    PFSearch.type = v[0]
+    PFSearch.product = v[1]
+
     $("#pf-map").trigger "update"
 
   @updateShebang: ->
