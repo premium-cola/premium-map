@@ -280,3 +280,9 @@ $(window).ready ->
   $("#pf-search-now").bind "click", ->
     Map.search $("#pf-search-input").val()
     false
+
+  # Reset the value of the layer dropdown
+  # (browsers do cache this)
+  # TODO: Encapsulate!
+  $("#pf-layer-select").val("l-c")
+  Map.setFuckedUpSelection "l-c"
