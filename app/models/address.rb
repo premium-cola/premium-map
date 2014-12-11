@@ -59,18 +59,11 @@ class Address < ActiveRecord::Base
   end
 
   def self.parse_excel(file)
-    spreadsheet = Spreadsheet.open file
-    sheet = spreadsheet.worksheet 0
-    row_num = 0
+    Spreadsheet.open(file).worksheet 0
     Address.transaction do
-      created_ids = []
-      sheet.each do |row|
-        row_num += 1
-        next if row_num == 1
-        addr = parse_row row
-        created_ids << addr.id if addr
+      sheet[1..-1].each do |row|
+        parse_row row
       end
-      Address.delete_all(['id not in (?)', created_ids])
     end
   end
 

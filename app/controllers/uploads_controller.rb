@@ -8,8 +8,6 @@ class UploadsController < ApplicationController
 
   def upload
     flash[:notice] = "Datei hochgeladen"
-    logger.debug params[:excel_file].content_type
-    logger.debug File.extname(params[:excel_file].original_filename)
     if (File.extname(params[:excel_file].original_filename) != ".xls" or params[:excel_file].content_type == "text/csv")
       Address.parse_csv(params[:excel_file].tempfile)
     else
