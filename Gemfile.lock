@@ -70,7 +70,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memcache-client (1.8.5)
     mime-types (1.21)
     modernizr-rails (2.7.0)
     multi_json (1.7.2)
@@ -160,7 +159,6 @@ DEPENDENCIES
   iconv
   jbuilder (~> 0.8.2)
   jquery-rails
-  memcache-client
   modernizr-rails
   rails (= 3.2.13)
   rake-remote_task (~> 2.1.0)

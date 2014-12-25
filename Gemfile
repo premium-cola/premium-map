@@ -55,9 +55,6 @@ gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'execjs'
 gem 'therubyracer'
 
-# Caching
-gem 'memcache-client'
-
 group :development do
   gem 'rake-remote_task', '~> 2.1.0'
 end
