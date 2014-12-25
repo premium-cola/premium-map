@@ -25,7 +25,8 @@ json.features @addresses do |json, address|
     json.email address.email
     json.telephone address.telephone
 
-    json.products address.products
+    # TODO: WTF. THIS IS FUCKING JSON
+    json.products address.products.map(&:name).join(", ")
 
     json.distance address.distance(@geopoint)
   end

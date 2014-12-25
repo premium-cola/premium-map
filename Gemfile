@@ -10,6 +10,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'modernizr-rails'
+  gem 'execjs'
+  gem 'therubyracer'
 end
 
 gem 'jquery-rails'
@@ -26,22 +28,12 @@ gem 'bootstrap-sass', '~> 1.4.2'
 
 # Geocoding
 gem 'geocoder'
-
 gem 'will_paginate'
 
 # XML Generation for KML Stuff
 gem 'builder'
 # JSON Generation
 gem 'jbuilder', '~> 0.8.2'
-
-# Excel Parsing
-gem 'spreadsheet'
-# Tags
-gem 'acts-as-taggable-on', '~>2.1.0'
-
-# Javascript runtime for asset compilation on target system
-gem 'execjs'
-gem 'therubyracer'
 
 gem 'awesome_print'
 
