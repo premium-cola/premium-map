@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+# TODO: UPDATE!
 
 gem 'rails', '3.2.13'
 
@@ -18,17 +19,10 @@ gem 'coffee-script', '~> 2.2.0'
 gem 'haml', '~> 3.2.0.alpha.8'
 gem 'redcarpet', '~> 2.0.0b'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
 gem 'unicorn'
 
 # Bootstrap UI
 gem 'bootstrap-sass', '~> 1.4.2'
-
-# Authentication + Authorisation
-gem 'devise'
-gem 'cancan'
 
 # Geocoding
 gem 'geocoder'
