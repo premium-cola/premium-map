@@ -23,12 +23,6 @@ gem 'redcarpet', '~> 2.0.0b'
 
 gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
 # Bootstrap UI
 gem 'bootstrap-sass', '~> 1.4.2'
 
@@ -38,7 +32,7 @@ gem 'cancan'
 
 # Geocoding
 gem 'geocoder'
-# Pagination :)
+
 gem 'will_paginate'
 
 # XML Generation for KML Stuff
@@ -54,10 +48,6 @@ gem 'acts-as-taggable-on', '~>2.1.0'
 # Javascript runtime for asset compilation on target system
 gem 'execjs'
 gem 'therubyracer'
-
-group :development do
-  gem 'rake-remote_task', '~> 2.1.0'
-end
 
 gem 'awesome_print'
 
