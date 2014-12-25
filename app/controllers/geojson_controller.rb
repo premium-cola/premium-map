@@ -4,9 +4,6 @@ class GeojsonController < ApplicationController
   caches_action :geojson, :expires_in => 300.seconds
 
   def geojson
-    @addresses = \
-      Address.where country: params[:country].upcase
-
     case params[:type].downcase.to_sym
     when :s
       @addresses = @addresses.tagged_with("speakers")

@@ -6,17 +6,6 @@ PFCloudmadeAttrib = PFCloudmadeUrl = PFIcon = null
 PFLayerGroup = PFMap = PFSearch = PFShebangData = null
 PFStart = PFlatlng = null
 
-PFCountries =
-  de:
-    lng: 10.451526
-    lat: 51.165691
-  at:
-    lng: 14.550072
-    lat: 47.516231
-  ch:
-    lng: 8.227512
-    lat: 46.818188
-
 PFUrls =
   geocoder: "/geocoder?q="
   geojson: "/geojson/"
@@ -75,7 +64,6 @@ $ ->
   # search var
   PFSearch =
     where: (PFShebangData[4] or "51.165691,10.451526")
-    country: (PFShebangData[1] or "de")
     type: (PFShebangData[2] or "d")
     product: (PFShebangData[3] or "c")
     items: []
@@ -89,7 +77,6 @@ $ ->
 
   # set values of selects
   $("#pf-layer-select").val PFSearch.type + "-" + PFSearch.product
-  $("#pf-country-select").val PFSearch.country
 
   # custom marker
   PFIcon = L.Icon.extend(
@@ -132,10 +119,6 @@ $ ->
   $("#pf-layer-select").bind "change", ->
     Map.setFuckedUpSelection $("#pf-layer-select").val()
 
-  # on country change
-  $("#pf-country-select").bind "change", ->
-    Map.setCountry $("#pf-country-select").val()
-
   # update shebang on zoom and move
   PFMap.on "zoomend", Map.updateShebang
   PFMap.on "moveend", Map.updateShebang
@@ -172,8 +155,7 @@ class Phonebook
 
 class Geocoder
   @search: (d, cb) ->
-    url = "#{PFUrls.geojson}" +
-          "/#{d.country}/#{d.type}/#{d.product}" +
+    url = "#{PFUrls.geojson}/#{d.type}/#{d.product}" +
           "/near/#{d.where}"
     $.getJSON url, cb
 
@@ -181,31 +163,6 @@ class Geocoder
     $.getJSON "#{PFUrls.geocoder}/#{what}", cb
 
 class Map
-  @setCountry: (c) ->
-    # which country?
-    switch c
-      when "at"
-        selected_lat = PFCountries.at.lat
-        selected_lng = PFCountries.at.lng
-      when "ch"
-        selected_lat = PFCountries.ch.lat
-        selected_lng = PFCountries.ch.lng
-      else
-        c = "de"
-        selected_lat = PFCountries.de.lat
-        selected_lng = PFCountries.de.lng
-
-    # update search var
-    PFSearch.country = c
-    PFSearch.coord.lng = selected_lng
-    PFSearch.coord.lat = selected_lat
-
-    # pan+zoom country
-    selected_country = new L.LatLng(selected_lat, selected_lng)
-    PFMap.setView selected_country, 5
-
-    Map.update()
-
   @setFuckedUpSelection: (fuck) ->
     # extract search parameters
     v = fuck.split '-'
@@ -217,7 +174,7 @@ class Map
 
   @updateShebang: ->
     window.location.hash = \
-        "!/#{PFSearch.country}/#{PFSearch.type}" +
+        "!/#{PFSearch.type}" +
         "/#{PFSearch.product}/#{PFMap.getCenter().lat}" +
         ",#{PFMap.getCenter().lng}/#{PFMap.getZoom()}"
 
