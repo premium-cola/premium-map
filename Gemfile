@@ -21,8 +21,6 @@ end
 gem 'unicorn'
 
 gem 'geocoder'
-# JSON Generation
-gem 'jbuilder', '~> 0.8.2'
 
 gem 'sqlite3'
 

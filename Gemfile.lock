@@ -47,8 +47,6 @@ GEM
     hike (1.2.3)
     i18n (0.6.1)
     iconv (1.0.4)
-    jbuilder (0.8.3)
-      activesupport (>= 3.0.0)
     journey (1.0.4)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -130,7 +128,6 @@ DEPENDENCIES
   geocoder
   haml (~> 3.2.0.alpha.8)
   iconv
-  jbuilder (~> 0.8.2)
   jquery-rails
   modernizr-rails
   rails (= 3.2.13)
