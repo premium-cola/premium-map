@@ -9,25 +9,17 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'modernizr-rails'
+  gem 'execjs'
+  gem 'therubyracer'
+  gem 'jquery-rails'
+  gem 'coffee-script', '~> 2.2.0'
+  gem 'haml', '~> 3.2.0.alpha.8'
+  gem 'redcarpet', '~> 2.0.0b'
+  gem 'bootstrap-sass', '~> 1.4.2'
 end
-
-gem 'jquery-rails'
-
-# Asset template engines
-gem 'coffee-script', '~> 2.2.0'
-gem 'haml', '~> 3.2.0.alpha.8'
-gem 'redcarpet', '~> 2.0.0b'
 
 gem 'unicorn'
 
-# Bootstrap UI
-gem 'bootstrap-sass', '~> 1.4.2'
-
-# Authentication + Authorisation
-gem 'devise'
-gem 'cancan'
-
-# Geocoding
 gem 'geocoder'
 # XML Generation for KML Stuff
 gem 'builder'
@@ -38,10 +30,6 @@ gem 'jbuilder', '~> 0.8.2'
 gem 'spreadsheet'
 # Tags
 gem 'acts-as-taggable-on', '~>2.1.0'
-
-# Javascript runtime for asset compilation on target system
-gem 'execjs'
-gem 'therubyracer'
 
 # Caching
 gem 'memcache-client'
