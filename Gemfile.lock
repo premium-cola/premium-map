@@ -31,7 +31,6 @@ GEM
     acts-as-taggable-on (2.1.1)
       rails
     arel (3.0.2)
-    awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (1.4.4)
       sass-rails (~> 3.1)
@@ -74,7 +73,6 @@ GEM
     mime-types (1.21)
     modernizr-rails (2.7.0)
     multi_json (1.7.2)
-    open4 (1.3.0)
     orm_adapter (0.0.6)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -101,9 +99,6 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.13.0)
     rake (10.1.0)
-    rake-remote_task (2.1.0)
-      open4 (~> 1.0)
-      rake (>= 0.8, < 11.0)
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.0.1)
@@ -140,14 +135,12 @@ GEM
       raindrops (~> 0.7)
     warden (1.1.0)
       rack (>= 1.0)
-    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   acts-as-taggable-on (~> 2.1.0)
-  awesome_print
   bootstrap-sass (~> 1.4.2)
   builder
   cancan
@@ -163,7 +156,6 @@ DEPENDENCIES
   memcache-client
   modernizr-rails
   rails (= 3.2.13)
-  rake-remote_task (~> 2.1.0)
   redcarpet (~> 2.0.0b)
   sass-rails (~> 3.2.3)
   spreadsheet
@@ -171,4 +163,3 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn
-  will_paginate

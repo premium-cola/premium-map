@@ -1,4 +1,5 @@
 # encoding: UTF-8
+# TODO: We are not really using sessions…
 
 # Be sure to restart your server when you modify this file.
 

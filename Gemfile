@@ -18,16 +18,7 @@ gem 'coffee-script', '~> 2.2.0'
 gem 'haml', '~> 3.2.0.alpha.8'
 gem 'redcarpet', '~> 2.0.0b'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
 gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Bootstrap UI
 gem 'bootstrap-sass', '~> 1.4.2'
@@ -38,9 +29,6 @@ gem 'cancan'
 
 # Geocoding
 gem 'geocoder'
-# Pagination :)
-gem 'will_paginate'
-
 # XML Generation for KML Stuff
 gem 'builder'
 # JSON Generation
@@ -57,12 +45,6 @@ gem 'therubyracer'
 
 # Caching
 gem 'memcache-client'
-
-group :development do
-  gem 'rake-remote_task', '~> 2.1.0'
-end
-
-gem 'awesome_print'
 
 gem 'sqlite3'
 
