@@ -64,10 +64,11 @@ $ ->
     PFShebangData = PFLocationHash[1].split("/")
 
   # search var
+  # TODO: Make resilient (gosh)
   PFSearch =
-    where: (PFShebangData[4] or "51.165691,10.451526")
-    type: (PFShebangData[2] or "d")
-    product: (PFShebangData[3] or "c")
+    where: (PFShebangData[3] or "51.165691,10.451526")
+    type: (PFShebangData[1] or "d")
+    product: (PFShebangData[2] or "c")
     items: []
     coord:
       lat: 0
@@ -175,10 +176,13 @@ class Map
     Map.update()
 
   @updateShebang: ->
-    window.location.hash = \
-        "!/#{PFSearch.type}" +
-        "/#{PFSearch.product}/#{PFMap.getCenter().lat}" +
-        ",#{PFMap.getCenter().lng}/#{PFMap.getZoom()}"
+    cent = PFMap.getCenter()
+    vals = Array \
+      PFSearch.type,
+      PFSearch.product,
+      [cent.lat, cent.lng].join(","),
+      PFMap.getZoom()
+    window.location.hash = "!/#{vals.join("/")}"
 
   @search: (what) ->
     return if what.length <= 0
