@@ -11,8 +11,10 @@ PFUrls =
   geojson: "/geojson/"
   route: "http://maps.google.com/maps?hl=de&daddr="
 
-jQuery.extend jQuery.browser,
-  mobile: navigator.userAgent.toLowerCase().match(/iPad|iPhone|Android/i)
+window.mobileDevice =
+  navigator.userAgent
+      .toLowerCase()
+      .match /iPad|iPhone|Android/i
 
 # format distance
 jQuery.fn.extend formatDistance: ->
@@ -43,7 +45,7 @@ $ ->
 
   # Mobile CSS
   # TODO: We have content types for this (gosh)
-  $("body").addClass "mobile"  if $.browser.mobile
+  $("body").addClass "mobile"  if mobileDevice
 
   # PF Tab bar
   $("#pf-tab-bar .pf-tab-header a").click ->
@@ -227,7 +229,7 @@ class Map
       $("#pf-results li").remove()
 
       # display first 3 list elements
-      Phonebook.loadMore();
+      Phonebook.loadMore()
 
       # close all open popups
       $("a.leaflet-popup-close-button").trigger "click"
