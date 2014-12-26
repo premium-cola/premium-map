@@ -8,7 +8,7 @@ PFStart = PFlatlng = null
 
 PFUrls =
   geocoder: "/geocoder?q="
-  geojson: "/geojson/"
+  geojson: "/geojson"
   route: "http://maps.google.com/maps?hl=de&daddr="
 
 window.mobileDevice =
@@ -158,9 +158,11 @@ class Phonebook
 
 class Geocoder
   @search: (d, cb) ->
-    url = "#{PFUrls.geojson}/#{d.type}/#{d.product}" +
-          "/near/#{d.where}"
-    $.getJSON url, cb
+    params =
+      type: d.type,
+      product: d.product,
+      geocode: d.where
+    $.getJSON PFUrls.geojson, params, cb
 
   @locate: (what, cb) ->
     $.getJSON "#{PFUrls.geocoder}/#{what}", cb
@@ -218,7 +220,8 @@ class Map
       # clear old layers and add new layer
       PFLayerGroup.clearLayers()
       PFLayerGroup.addLayer PFGeoJSONLayer
-      PFGeoJSONLayer.addGeoJSON data
+      data.features.map (d) ->
+        PFGeoJSONLayer.addGeoJSON d
 
       # update search var
       PFSearch.items = data.features.reverse()
