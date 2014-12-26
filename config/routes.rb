@@ -7,12 +7,9 @@ PremiumCola::Application.routes.draw do
   match "geojson/:type/:product/:near/:geocode" => "geojson#geojson", :constraints => { :geocode => /.*/ }, :format => :json
 
   resources :addresses
-  resources :maps do
-    collection do
-      get 'kml'
-      get 'embed(/:display)' => 'maps#embed', :defaults => { :display => 'all' }
-    end
-  end
+  # TODO: Deprecate?
+  get 'maps/embed(/:display)' => 'maps#embed',
+      defaults: { display: 'all' }
 
   resource :upload do
     post 'upload'

@@ -21,8 +21,6 @@ end
 gem 'unicorn'
 
 gem 'geocoder'
-# XML Generation for KML Stuff
-gem 'builder'
 # JSON Generation
 gem 'jbuilder', '~> 0.8.2'
 
