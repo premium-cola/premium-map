@@ -1,21 +1,21 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
   gem 'modernizr-rails'
   gem 'execjs'
   gem 'therubyracer'
   gem 'jquery-rails'
-  gem 'coffee-script', '~> 2.2.0'
-  gem 'haml', '~> 3.2.0.alpha.8'
-  gem 'redcarpet', '~> 2.0.0b'
-  gem 'bootstrap-sass', '~> 1.4.2'
+  gem 'coffee-script'
+  gem 'haml'
+  gem 'redcarpet'
+  gem 'bootstrap-sass'
 end
 
 gem 'unicorn'
@@ -25,3 +25,5 @@ gem 'geocoder'
 gem 'sqlite3'
 
 gem 'iconv'
+
+gem 'actionpack-action_caching'

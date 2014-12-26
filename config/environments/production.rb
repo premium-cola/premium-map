@@ -3,6 +3,9 @@
 PremiumCola::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # TODO: Configure what to eager-load
+  config.eager_load = true
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
