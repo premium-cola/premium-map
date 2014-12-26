@@ -29,9 +29,6 @@ gem 'spreadsheet'
 # Tags
 gem 'acts-as-taggable-on', '~>2.1.0'
 
-# Caching
-gem 'memcache-client'
-
 gem 'sqlite3'
 
 gem 'iconv'

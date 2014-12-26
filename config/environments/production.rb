@@ -39,7 +39,9 @@ PremiumCola::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :mem_cache_store, {:default_ttl=>5.minutes.to_i}
+  # We don't because this app is rather small
+  # TODO: Can we do hybrid memory/disk?
+  config.cache_store = :file_store, "#{Rails.root}/tmp/cache/application"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
