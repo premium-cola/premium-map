@@ -24,30 +24,29 @@ ActiveRecord::Schema.define(:version => 20141218144929) do
     t.string   "comment"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "web"
     t.string   "email"
     t.string   "telephone"
     t.integer  "collmex_id"
   end
 
-  add_index "addresses", ["collmex_id"], :name => "index_addresses_on_collmex_id"
-
-  create_table "taggings", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context"
-    t.datetime "created_at"
+  create_table "addresses_products", :id => false, :force => true do |t|
+    t.integer "address_id", :null => false
+    t.integer "product_id", :null => false
   end
 
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  create_table "addresses_roles", :id => false, :force => true do |t|
+    t.integer "address_id", :null => false
+    t.integer "role_id",    :null => false
+  end
 
-  create_table "tags", :force => true do |t|
+  create_table "products", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "roles", :force => true do |t|
     t.string "name"
   end
 end

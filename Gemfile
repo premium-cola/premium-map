@@ -24,11 +24,6 @@ gem 'geocoder'
 # JSON Generation
 gem 'jbuilder', '~> 0.8.2'
 
-# Excel Parsing
-gem 'spreadsheet'
-# Tags
-gem 'acts-as-taggable-on', '~>2.1.0'
-
 gem 'sqlite3'
 
 gem 'iconv'
