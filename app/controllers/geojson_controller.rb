@@ -4,7 +4,6 @@ require_relative '../models/product'
 require_relative '../models/role'
 
 class GeojsonController < ApplicationController
-  caches_action :geojson, :expires_in => 300.seconds
 
   # TODO: Those maps are fucked up, just use decent, full
   # names
@@ -53,6 +52,7 @@ class GeojsonController < ApplicationController
         geometry: geo,
         type: "Feature" # TODO: Formatting for leaflet should be done by JS
     end
+      .sort_by {|a| a[:properties][:distance] || 1E100 }
     render_json type: :FeatureCollection, features: fmt_adr
   end
 end

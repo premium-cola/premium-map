@@ -40,9 +40,8 @@ class Address < ActiveRecord::Base
     "#{person_name} #{company}".strip
   end
 
-  def distance(point)
-    d = distance_from(point) || 1
-    d * 1.609344
+  def distance point
+    distance_from point, :km
   end
 
   def does? *roles

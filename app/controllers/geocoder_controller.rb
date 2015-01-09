@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 class GeocoderController < ApplicationController
-  caches_action :geocode, :expires_in => 300.seconds
 
   def geocoder
     p = Geocoder.search(params["q"].to_s).first
