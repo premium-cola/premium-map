@@ -133,11 +133,11 @@ a.leaflet-active {
   height: 27px;
 }
 .leaflet-control-zoom-in {
-  background-image: url(leaflet/zoom-in.png);
+  background-image: image-url("leaflet/zoom-in.png");
   margin-bottom: 5px;
 }
 .leaflet-control-zoom-out {
-  background-image: url(leaflet/zoom-out.png);
+  background-image: image-url("leaflet/zoom-out.png");
 }
 
 .leaflet-container .leaflet-control-attribution {

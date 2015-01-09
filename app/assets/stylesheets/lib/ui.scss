@@ -11,9 +11,9 @@
   text-transform: uppercase;
   padding: 7px 8px;
   border: 1px solid darken($grey, 15);
-  background: $grey url('gradient.png');
+  background: $grey image-url('gradient.png');
   &:hover { @include shadow($blur: 1px, $color: rgba(0, 0, 0, 0.3)); }
-  &:active { 
+  &:active {
     @include inner-shadow($blur: 2px, $color: rgba(0, 0, 0, .3));
     color: darken(white, 40);
     background: darken($grey, 5) ;
@@ -31,10 +31,10 @@
   padding: 4px 5px;
   border: 2px solid white;
   width: $width;
-  &:hover { 
+  &:hover {
     @include inner-shadow($color: rgba(0, 0, 0, .4));
 
-    border-color: lighten(#ffcc33, 5); 
+    border-color: lighten(#ffcc33, 5);
 }
 &:focus {
   @include inner-shadow($blur: 4px, $color: rgba(0, 0, 0, .4));
