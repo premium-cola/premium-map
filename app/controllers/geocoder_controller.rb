@@ -12,7 +12,7 @@ class GeocoderController < ApplicationController
       result: 'ok',
       coord: {
         lat: p.latitude,
-        lng: p.longtitude
+        lng: p.longitude
       }
   end
 end
