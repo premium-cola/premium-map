@@ -45,12 +45,10 @@ class Address < ActiveRecord::Base
   end
 
   def does? *roles
-    tag_set(Role, *x)
+    tags_set? Role, *roles
   end
 
-  def sells? *roles
-    product
-      .map {|r| self.roles.include? Product(r) }
-      .all
+  def sells? *products
+    tags_set? Product, *products
   end
 end
