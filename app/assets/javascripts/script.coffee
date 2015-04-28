@@ -75,8 +75,8 @@ $ ->
       lng: 0
 
   PFlatlng = PFSearch.where.split(",")
-  PFSearch.coord.lat = parseFloat(PFlatlng[0])
-  PFSearch.coord.lng = parseFloat(PFlatlng[1])
+  PFSearch.coord.lat = parseFloat(PFlatlng[0]) || 51.165691
+  PFSearch.coord.lng = parseFloat(PFlatlng[1]) || 10.451526
 
   # set values of selects
   $("#pf-layer-select").val PFSearch.type + "-" + PFSearch.product
