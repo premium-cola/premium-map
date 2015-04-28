@@ -11,8 +11,8 @@ module HaveTags
         # Setter for the tags. Allows us to do this:
         # Address.products = [Product(:cola), :beer, "frohlunder"]
         # TODO: I would like to mutate the relation object in this way `Address.products << :cola`
-        define_method HaveTags.sym_set(clz) do |x|
-          super x.map {}
+        define_method HaveTags.sym_set(clz) do |vals|
+          super vals.map {|v| clz.Get v }
         end
 
       end

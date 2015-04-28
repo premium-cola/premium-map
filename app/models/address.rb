@@ -14,8 +14,6 @@ class Address < ActiveRecord::Base
   have_tags Product
   have_tags Role
 
-  before_save :resolve_tags
-
   def reset_geocode
     # TODO: Use a proper cache for that
     changed =  street_changed? || zipcode_changed? \
