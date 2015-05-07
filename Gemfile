@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+ruby '2.1.5'
+
 gem 'rails'
 
 # Gems used only for assets and not required
