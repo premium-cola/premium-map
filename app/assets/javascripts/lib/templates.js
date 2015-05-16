@@ -62,7 +62,7 @@
   //   {{/email}}
   // </p>
 
-  var PFPopupTemplate = '<h4>{{company}}</h4>{{#products}}<em>{{products}}</em><br/>{{/products}}{{#street}}<p>{{street}}<br/>{{zipcode}} {{city}}<br/> {{country}}</p>{{/street}}<p>{{#telephone}}Tel.: {{telephone}} <br/>{{/telephone}}{{#web}}<a target="_blank" href="/{{web}}">{{web}}</a> <br/>{{/web}}{{#email}}<a href="mailto:{{email}}">{{email}}</a>{{/email}}</p>';
+  var PFPopupTemplate = '<h4>{{company}}</h4>{{#products}}<em>{{products}}</em><br/>{{/products}}{{#street}}<p>{{street}}<br/>{{zipcode}} {{city}}<br/> {{country}}</p>{{/street}}<p>{{#telephone}}Tel.: {{telephone}} <br/>{{/telephone}}{{#web}}<a target="_blank" href="{{web}}">{{web}}</a> <br/>{{/web}}{{#email}}<a href="mailto:{{email}}">{{email}}</a>{{/email}}</p>';
 
 
 
