@@ -40,6 +40,16 @@ We are using very old gems here. If you run into problems
 finding some of the very old ones, they should be provided
 int the docker container's repo.
 
+### Importing data
+
+db/seeds.rb can be used to import json-formatted data from STDIN.
+https://github.com/premium-cola/premium-map-importer is used to convert data from the internal CSV format to a proper JSON format.
+
+The resulting command line would be something like this, to reinitialize the entire database from a csv file.
+```< ../data.csv ruby ../premium-map-importer/convert.rb | RAILS_ENV=production bundle exec rake db:reset```
+
+*NOTE:* For security reasons the converter shoul be run on a trusted computer. The resulting JSON is considered public and can be send to untrusted web servers
+
 ## Credits
 
 * Karolin Varner <karo@cupdev.net> (*active*)
